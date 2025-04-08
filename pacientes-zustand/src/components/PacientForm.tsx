@@ -2,20 +2,43 @@ import { useForm } from "react-hook-form"
 import Error from "./Error"
 import { DraftPatient } from "../types"
 import { usePatientStore } from "../store"
+import { useEffect } from "react"
+import { toast } from "react-toastify"
 
 export default function PacientForm() {
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<DraftPatient>()
+  const { register, setValue, handleSubmit, formState: { errors }, reset } = useForm<DraftPatient>()
 
   /*   const {addPacient}=usePatientStore()
    */
   //otra forma -mas comun en redux-toolkit- :
   const addPacient = usePatientStore(state => state.addPacient)
+  const activeId = usePatientStore(state => state.activeId)
+  const patients = usePatientStore(state => state.patients)
+  const updatePatient = usePatientStore(state => state.updatePatient)
+
+  useEffect(() => {
+    if (activeId) {
+      const activePatient = patients.filter(patient => patient.id === activeId)[0]
+      setValue('name', activePatient.name)
+      setValue('caretaker', activePatient.caretaker)
+      setValue('email', activePatient.email)
+      setValue('date', activePatient.date)
+      setValue('symptoms', activePatient.symptoms)
+    }
+  }, [activeId])
 
   const registerPatient = (data: DraftPatient) => {
-    addPacient(data)
+    if (activeId) {
+      updatePatient(data)
+      toast.success('Paciente actualizado correctamente')
+    } else {
+      addPacient(data)
+      toast.success('Paciente registrado correctamente ')
+    }
     reset()
   }
+
 
   return (
     <div className="md:w-1/2 lg:w-1/2 mx-5">
@@ -41,7 +64,7 @@ export default function PacientForm() {
           <label htmlFor="caretaker" className="text-sm uppercase font-bold">Propietario</label>
           <input type="text" id="caretaker" placeholder="Nombre del Propietario" className="w-full p-3 border border-gray-100"
             {...register('caretaker', { required: 'El propietario es obligatorio' })} />
-          {errors.name && (
+          {errors.caretaker && (
             <Error>
               {errors.caretaker?.message}
             </Error>
@@ -97,7 +120,7 @@ export default function PacientForm() {
         <input
           type="submit"
           className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors"
-          value='Guardar Paciente'
+          value={activeId ? 'Guardar Paciente' : "Agregar Paciente"}
         />
       </form>
     </div>
