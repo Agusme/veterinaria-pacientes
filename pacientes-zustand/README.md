@@ -1,54 +1,44 @@
-# React + TypeScript + Vite
+# 🐾 Veterinaria - Seguimiento de Turnos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web desarrollada con **React + TypeScript** para gestionar turnos veterinarios. Permite registrar pacientes, editar información y llevar un control claro de los turnos.
 
-Currently, two official plugins are available:
+## ✨ Vista previa
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Captura del proyecto](./img-readme.png)
+👉 [Visitar la app](https://tu-enlace.netlify.app)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Tecnologías utilizadas
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- ⚛️ React+ Vite
+- 🟦 TypeScript
+- 🧠 Zustand para gestión de estado
+- 🛠️ Redux DevTools
+- 📋 React Hook Form para formularios
+- 🔔 React Toastify para notificaciones
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ Instalación
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Clonar el repositorio:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+    ```bash
+    git clone https://github.com/tu-usuario/seguimiento-turnos-veterinaria.git
+
+2. Instalar dependencias:
+    ```bash
+    npm install
+
+3. Iniciar el servidor de desarrollo:
+    ```bash
+    npm run dev
+
+## 🧩 Funcionalidades
+
+- Registro y edición de pacientes
+- Gestión visual de turnos
+- Notificaciones amigables al usuario
+- Persistencia local automática de datos con `localStorage` (usando `zustand/persist`)
+
+## ✨ Vista previa
+
+ ![Captura del proyecto](./img-readme.png)
