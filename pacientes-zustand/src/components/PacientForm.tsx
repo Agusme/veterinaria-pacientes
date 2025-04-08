@@ -1,15 +1,22 @@
 import { useForm } from "react-hook-form"
 import Error from "./Error"
 import { DraftPatient } from "../types"
+import { usePatientStore } from "../store"
 
 export default function PacientForm() {
 
-  const { register, handleSubmit, formState: { errors } } = useForm<DraftPatient>()
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<DraftPatient>()
+
+  /*   const {addPacient}=usePatientStore()
+   */
+  //otra forma -mas comun en redux-toolkit- :
+  const addPacient = usePatientStore(state => state.addPacient)
 
   const registerPatient = (data: DraftPatient) => {
-    console.log(data)
+    addPacient(data)
+    reset()
   }
-  
+
   return (
     <div className="md:w-1/2 lg:w-1/2 mx-5">
       <h2 className="font-black text-3xl text-center">Seguimiento Pacientes</h2>
@@ -25,7 +32,7 @@ export default function PacientForm() {
           {errors.name && (
             <Error>
               {errors.name?.message}
-             
+
             </Error>
           )}
 
@@ -61,9 +68,9 @@ export default function PacientForm() {
         <div className="mb-5">
           <label htmlFor="date" className="text-sm uppercase font-bold">Fecha Alta</label>
           <input type="date" id="date" className="w-full p-3 border border-gray-100"
-          {...register('date',{
-            required:'La fecha de alta es obligatoria'
-          })} />
+            {...register('date', {
+              required: 'La fecha de alta es obligatoria'
+            })} />
 
           {errors.date && (
             <Error>
@@ -77,15 +84,15 @@ export default function PacientForm() {
             id="symptoms"
             className="w-full p-3  border border-gray-100"
             placeholder="Síntomas del paciente"
-         {...register('symptoms',{
-          required:'Los síntomas son obligatorios'
-         })}
-         />
-         {errors.symptoms && (
-          <Error>
-            {errors.symptoms?.message}
-          </Error>
-         )}
+            {...register('symptoms', {
+              required: 'Los síntomas son obligatorios'
+            })}
+          />
+          {errors.symptoms && (
+            <Error>
+              {errors.symptoms?.message}
+            </Error>
+          )}
         </div>
         <input
           type="submit"
