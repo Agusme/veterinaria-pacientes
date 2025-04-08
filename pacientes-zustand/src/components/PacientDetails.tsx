@@ -17,7 +17,7 @@ export default function PacientDetails({ patient }: PatientDetailProps) {
         toast.success('Paciente eliminado correctamente')
     }
     return (
-        <div className="mx-5 my-10 px-5 py-10 bg-white shadow-md rounded-lg">
+        <div className="bg-white shadow-md rounded-lg py-10 px-5 mb-10">
 
             <PacientDetailItem
                 label="ID"
