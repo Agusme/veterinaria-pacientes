@@ -5,7 +5,7 @@ Aplicación web desarrollada con **React + TypeScript** para gestionar turnos ve
 ## ✨ Vista previa
 
 ![Captura del proyecto](./img-readme.png)
-👉 [Visitar la app](https://tu-enlace.netlify.app)
+👉 [Visitar la app](https://veterinariaagus.netlify.app/)
 
 
 ## 🚀 Tecnologías utilizadas
