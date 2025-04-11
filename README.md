@@ -39,6 +39,6 @@ Aplicación web desarrollada con **React + TypeScript** para gestionar turnos ve
 - Notificaciones amigables al usuario
 - Persistencia local automática de datos con `localStorage` (usando `zustand/persist`)
 
-## ✨ Vista previa
+## Autora: 
 
- ![Captura del proyecto](./img-readme.png)
+- 👩🏽‍💻[Agustina Mena](https://www.linkedin.com/in/agustina-mena-169298204/)
